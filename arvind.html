@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -671,7 +671,7 @@ const html = document.documentElement;
 document.getElementById('themeBtn').addEventListener('click', function(){
   const dark = html.getAttribute('data-theme') === 'dark';
   html.setAttribute('data-theme', dark ? 'light' : 'dark');
-  this.textContent = dark ? '🌙' : '☀️';
+  this.textContent = dark ? '☀️' : '🌙';
 });
 
 // Hamburger
