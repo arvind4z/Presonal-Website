@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Arvind G. — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root[data-theme="dark"]{
+  --bg:#09090f;
+  --bg2:#0f0f18;
+  --card:#131320;
+  --border:#1e1e32;
+  --accent:#e8c547;
+  --accent2:#5b8fff;
+  --text:#ececf4;
+  --text2:#7070a0;
+  --text3:#2e2e4a;
+  --glow:rgba(232,197,71,0.12);
+  --sh:0 20px 60px rgba(0,0,0,0.8);
+}
+:root[data-theme="light"]{
+  --bg:#fafaf5;
+  --bg2:#f2f2e8;
+  --card:#ffffff;
+  --border:#e0e0cc;
+  --accent:#c8960a;
+  --accent2:#2a5fd4;
+  --text:#1a1a2e;
+  --text2:#6060808;
+  --text3:#c0c0d0;
+  --glow:rgba(200,150,10,0.1);
+  --sh:0 20px 60px rgba(0,0,0,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:background .4s,color .4s;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 3rem;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+  transition:background .4s;
+}
+.logo{
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;font-weight:800;letter-spacing:-.01em;
+}
+.logo em{font-style:italic;color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:.78rem;font-weight:500;color:var(--text2);
+  text-decoration:none;letter-spacing:.08em;text-transform:uppercase;
+  font-family:'DM Mono',monospace;transition:color .2s;
+}
+.nav-links a:hover{color:var(--accent);}
+.theme-toggle{
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--border);
+  background:var(--card);color:var(--text);
+  cursor:pointer;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.theme-toggle:hover{border-color:var(--accent);transform:rotate(20deg);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.ham span{width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:all .3s;}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:8rem 3rem 5rem;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.hero-glow{
+  position:absolute;top:20%;left:50%;
+  transform:translateX(-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,var(--glow),transparent 65%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1;max-width:700px;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:.75rem;
+  color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+  padding:.35rem 1rem;
+  border:1px solid rgba(232,197,71,.25);
+  border-radius:100px;
+  background:rgba(232,197,71,.05);
+}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.6);}}
+h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(3.5rem,8vw,6.5rem);
+  font-weight:800;line-height:1;
+  letter-spacing:-.03em;
+  margin-bottom:1.2rem;
+}
+h1 em{font-style:italic;color:var(--accent);}
+.hero-sub{
+  font-size:1.1rem;color:var(--text2);
+  line-height:1.7;max-width:500px;margin:0 auto 2.5rem;font-weight:300;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 2rem;border-radius:12px;
+  background:var(--accent);color:#000;
+  font-weight:600;font-size:.9rem;
+  text-decoration:none;transition:all .3s;border:none;cursor:pointer;
+}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 12px 32px var(--glow);}
+.hero-socials{
+  display:flex;gap:.7rem;justify-content:center;margin-top:2.5rem;
+}
+.slink{
+  width:38px;height:38px;border-radius:10px;
+  border:1px solid var(--border);background:var(--card);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text2);text-decoration:none;font-size:.95rem;
+  transition:all .3s;
+}
+.slink:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);}
+
+/* ── SECTION BASE ── */
+section{padding:6rem 3rem;}
+.container{max-width:1000px;margin:0 auto;}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:.7rem;
+  color:var(--accent);letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;
+}
+.sec-label::before{content:'──';color:var(--text3);letter-spacing:-.05em;}
+.sec-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:800;letter-spacing:-.02em;line-height:1.1;
+  margin-bottom:2.5rem;
+}
+.sec-title em{font-style:italic;color:var(--accent);}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:5rem;align-items:start;}
+
+.about-left{position:sticky;top:100px;}
+.avatar-box{
+  width:100%;aspect-ratio:1;border-radius:24px;
+  background:linear-gradient(135deg,var(--card),var(--bg));
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;margin-bottom:1.5rem;
+  position:relative;overflow:hidden;
+}
+.avatar-box::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--glow),transparent);
+}
+.info-row{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.6rem 0;border-bottom:1px solid var(--border);
+  font-size:.83rem;color:var(--text2);
+}
+.info-row i{color:var(--accent);width:14px;text-align:center;}
+.info-row strong{color:var(--text);margin-left:auto;text-align:right;font-size:.82rem;}
+
+.about-right{}
+.about-right p{
+  color:var(--text2);line-height:1.9;
+  margin-bottom:1.2rem;font-size:.96rem;font-weight:300;
+}
+.about-right p strong{color:var(--text);font-weight:600;}
+
+/* highlights */
+.highlights{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:2rem 0;}
+.hl-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:1.1rem 1.2rem;
+  transition:border-color .3s;
+}
+.hl-card:hover{border-color:var(--accent);}
+.hl-icon{font-size:1.4rem;margin-bottom:.4rem;}
+.hl-title{font-size:.82rem;font-weight:600;margin-bottom:.2rem;}
+.hl-sub{font-size:.74rem;color:var(--text2);}
+
+/* quote */
+.quote-block{
+  border-left:3px solid var(--accent);
+  padding:.8rem 1.2rem;
+  background:var(--card);border-radius:0 12px 12px 0;
+  margin:1.5rem 0;
+  font-family:'Fraunces',serif;
+  font-style:italic;font-size:1rem;
+  color:var(--text2);line-height:1.7;
+}
+
+/* interest tags */
+.interest-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.itag{
+  padding:.3rem .85rem;border-radius:100px;
+  font-size:.76rem;font-weight:500;
+  border:1px solid var(--border);background:var(--card);
+  color:var(--text2);transition:all .3s;
+}
+.itag:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── COMING SOON SECTIONS ── */
+.coming-section{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+.coming-section:nth-child(even){background:var(--bg2);}
+.coming-inner{
+  max-width:1000px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.coming-left{}
+.coming-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:.68rem;
+  color:var(--text3);letter-spacing:.1em;text-transform:uppercase;
+  padding:.25rem .7rem;border:1px solid var(--border);border-radius:100px;
+  margin-bottom:.8rem;
+}
+.coming-section .sec-title{margin-bottom:.3rem;}
+.coming-desc{color:var(--text2);font-size:.88rem;}
+.coming-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.6rem 1.4rem;border-radius:100px;
+  border:1.5px dashed var(--border);
+  font-family:'DM Mono',monospace;font-size:.78rem;
+  color:var(--text3);white-space:nowrap;
+}
+.coming-pill .dot2{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent2);
+  animation:pulse2 2s infinite;
+}
+@keyframes pulse2{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+/* ── ACHIEVEMENTS ── */
+.ach-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:.5rem;}
+.ach-card{
+  display:flex;gap:1.5rem;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:1.8rem;
+  transition:border-color .3s,transform .3s;
+}
+.ach-card:hover{border-color:var(--accent);transform:translateX(4px);}
+.ach-left{display:flex;flex-direction:column;align-items:center;gap:.5rem;flex-shrink:0;}
+.ach-medal{font-size:2.2rem;line-height:1;}
+.ach-line{flex:1;width:2px;background:var(--border);border-radius:2px;min-height:20px;}
+.ach-body{flex:1;min-width:0;}
+.ach-meta{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;flex-wrap:wrap;}
+.ach-badge{
+  font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;
+  padding:.22rem .7rem;border-radius:100px;
+  background:rgba(232,197,71,.12);color:var(--accent);
+  border:1px solid rgba(232,197,71,.25);letter-spacing:.05em;
+}
+.ach-badge-gold{background:rgba(255,180,0,.15);color:#ffb300;border-color:rgba(255,180,0,.3);}
+.ach-date{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text3);display:flex;align-items:center;gap:.35rem;}
+.ach-title{
+  font-family:'Fraunces',serif;font-size:1.05rem;font-weight:800;
+  letter-spacing:-.01em;margin-bottom:.4rem;line-height:1.3;
+}
+.ach-issuer{font-size:.78rem;color:var(--accent2);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem;font-weight:500;}
+.ach-desc{font-size:.84rem;color:var(--text2);line-height:1.75;margin-bottom:.9rem;font-weight:300;}
+.ach-desc strong{color:var(--text);font-weight:600;}
+.ach-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.ach-tag{
+  font-size:.7rem;padding:.2rem .6rem;border-radius:6px;
+  background:var(--bg3,var(--bg2));border:1px solid var(--border);
+  color:var(--text2);font-family:'DM Mono',monospace;
+}
+@media(max-width:640px){
+  .ach-card{flex-direction:column;gap:1rem;}
+  .ach-left{flex-direction:row;align-items:center;}
+  .ach-line{flex:1;height:2px;width:auto;min-height:unset;}
+}
+
+/* ── CONTACT FULL ── */
+.contact-full{background:var(--bg2);border-top:1px solid var(--border);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
+.con-info-title{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.7rem;}
+.con-info-title em{font-style:italic;color:var(--accent);}
+.con-info-desc{color:var(--text2);line-height:1.8;font-size:.9rem;font-weight:300;margin-bottom:1.8rem;}
+.con-item{
+  display:flex;align-items:center;gap:.9rem;
+  padding:.75rem 0;border-bottom:1px solid var(--border);
+  font-size:.88rem;color:var(--text2);
+}
+.con-item:last-of-type{border-bottom:none;}
+.con-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);font-size:.85rem;flex-shrink:0;
+}
+.con-item a{color:var(--text2);text-decoration:none;transition:color .2s;}
+.con-item a:hover{color:var(--accent);}
+.con-socials{display:flex;gap:.6rem;margin-top:1.5rem;}
+/* form */
+.con-form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;}
+.fgrp{margin-bottom:1rem;}
+.fgrp label{display:block;font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45rem;}
+.fgrp input,.fgrp textarea{
+  width:100%;background:var(--bg);border:1.5px solid var(--border);
+  border-radius:10px;padding:.7rem 1rem;
+  color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;
+  outline:none;transition:border-color .2s;
+}
+.fgrp input:focus,.fgrp textarea:focus{border-color:var(--accent);}
+.fgrp textarea{min-height:110px;resize:vertical;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.send-btn{
+  width:100%;padding:.85rem;border-radius:10px;
+  background:var(--accent);color:#000;
+  border:none;font-size:.9rem;font-weight:700;
+  cursor:pointer;transition:all .3s;
+  font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  margin-top:.3rem;
+}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--glow);}
+@media(max-width:800px){
+  .contact-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:2rem 3rem;text-align:center;
+  font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text3);
+}
+footer span{color:var(--accent);}
+
+/* ── FADE IN ── */
+.fadein{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.fadein.show{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:800px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;position:fixed;top:62px;left:0;right:0;background:var(--bg);flex-direction:column;padding:1.5rem;border-bottom:1px solid var(--border);gap:1.2rem;}
+  .nav-links.open{display:flex;}
+  .ham{display:flex;}
+  section{padding:4rem 1.5rem;}
+  #hero{padding:7rem 1.5rem 4rem;}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .about-left{position:static;}
+  .highlights{grid-template-columns:1fr;}
+  .coming-inner{flex-direction:column;gap:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Arvind <em>G.</em></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.8rem;">
+    <button class="theme-toggle" id="themeBtn">🌙</button>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content fadein">
+    <div class="hero-eyebrow"><span class="pulse"></span> Open to Opportunities</div>
+    <h1>Arvind <em>G.</em></h1>
+    <p class="hero-sub">ECE Student · Developer · Community Leader<br/>Bharati Vidyapeeth College of Engineering, Pune</p>
+    <a href="#about" class="hero-cta"><i class="fas fa-arrow-down"></i> Know More</a>
+    <div class="hero-socials">
+      <a href="https://www.linkedin.com/in/arvind4z/" target="_blank" class="slink"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/arvind4z" target="_blank" class="slink"><i class="fab fa-github"></i></a>
+      <a href="#" class="slink"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="slink"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="slink"><i class="fab fa-hackerrank"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- LEFT -->
+      <div class="about-left fadein">
+        <div class="avatar-box">🧑‍💻</div>
+        <div class="info-row"><i class="fas fa-graduation-cap"></i> Degree <strong>B.Tech ECE</strong></div>
+        <div class="info-row"><i class="fas fa-university"></i> College <strong>BVCOE, Pune</strong></div>
+        <div class="info-row"><i class="fas fa-star"></i> CGPA <strong>8.12 / 10</strong></div>
+        <div class="info-row"><i class="fas fa-calendar"></i> Year <strong>2nd Year</strong></div>
+        <div class="info-row"><i class="fas fa-map-marker-alt"></i> Location <strong>Pune, MH 🇮🇳</strong></div>
+        <div class="info-row"><i class="fas fa-circle" style="color:#3dd9af;font-size:.5rem;"></i> Status <strong style="color:#3dd9af;">Available</strong></div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="about-right fadein">
+        <div class="sec-label">Who I Am</div>
+        <h2 class="sec-title">Building things that <em>matter</em></h2>
+
+        <p>
+          Hi! I'm <strong>Arvind G.</strong> — a second-year Electronics and Communication Engineering student at <strong>Bharati Vidyapeeth College of Engineering, Pune</strong>. I'm someone who enjoys building things — whether it's tech projects, student communities, or events that bring people together.
+        </p>
+        <p>
+          My biggest project so far is an <strong>AI-based smart waste segregation system</strong>, where I worked on acoustic signal analysis and machine learning to classify and automate different types of waste. This project secured <strong>2nd place at an international competition</strong>.
+        </p>
+        <p>
+          I also secured <strong>2nd place in Algo Arena</strong>, an online coding competition conducted by STC IIT Patna, which has sharpened my problem-solving skills. I have hands-on experience with <strong>Python and Java</strong>, applied across game development and algorithmic challenges.
+        </p>
+
+        <div class="quote-block">
+          "I love exploring AI, solving problems, and helping students discover tools that actually make learning easier and smarter."
+        </div>
+
+        <p>
+          Currently, I am deepening my knowledge in <strong>data structures and cybersecurity</strong> to further strengthen my technical foundation. I'm looking for opportunities where I can apply my skills and continue to grow.
+        </p>
+
+        <div class="highlights">
+          <div class="hl-card">
+            <div class="hl-icon">🏆</div>
+            <div class="hl-title">2nd Place — International</div>
+            <div class="hl-sub">AI Smart Waste Segregation System</div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">💻</div>
+            <div class="hl-title">2nd Place — Algo Arena</div>
+            <div class="hl-sub">STC IIT Patna Coding Competition</div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">⚡</div>
+            <div class="hl-title">IEEE Student Branch</div>
+            <div class="hl-sub">Treasurer</div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">🤝</div>
+            <div class="hl-title">Rotaract Club of Pune Wisdom</div>
+            <div class="hl-sub">Community Service Director</div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">📡</div>
+            <div class="hl-title">ECE Dept. Student Association</div>
+            <div class="hl-sub">Assistant Joint Secretary</div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">🎯</div>
+            <div class="hl-title">CGPA 8.12</div>
+            <div class="hl-sub">B.Tech Electronics & Communication</div>
+          </div>
+        </div>
+
+        <div class="sec-label" style="margin-top:1.5rem;">Interests</div>
+        <div class="interest-tags">
+          <span class="itag">🤖 Artificial Intelligence</span>
+          <span class="itag">🔐 Cybersecurity</span>
+          <span class="itag">🌐 Web Development</span>
+          <span class="itag">📊 Data Structures</span>
+          <span class="itag">☕ Java</span>
+          <span class="itag">🐍 Python</span>
+          <span class="itag">🏋️ Gym</span>
+          <span class="itag">🍳 Cooking</span>
+          <span class="itag">🪴 Planting</span>
+          <span class="itag">🤝 Community Service</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS — COMING SOON -->
+<section id="skills" class="coming-section">
+  <div class="coming-inner">
+    <div class="coming-left fadein">
+      <div class="coming-badge">Section 02</div>
+      <h2 class="sec-title">Skills &amp; <em>Expertise</em></h2>
+      <p class="coming-desc">Technical skills, certifications, tools and more — being compiled.</p>
+    </div>
+    <div class="coming-pill fadein"><span class="dot2"></span> Coming Soon</div>
+  </div>
+</section>
+
+<!-- PROJECTS — COMING SOON -->
+<section id="projects" class="coming-section">
+  <div class="coming-inner">
+    <div class="coming-left fadein">
+      <div class="coming-badge">Section 03</div>
+      <h2 class="sec-title">Featured <em>Projects</em></h2>
+      <p class="coming-desc">AI Smart Bin, Snake Game, Billing System and more — details dropping soon.</p>
+    </div>
+    <div class="coming-pill fadein"><span class="dot2"></span> Coming Soon</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE — COMING SOON -->
+<section id="experience" class="coming-section">
+  <div class="coming-inner">
+    <div class="coming-left fadein">
+      <div class="coming-badge">Section 04</div>
+      <h2 class="sec-title">Experience &amp; <em>Leadership</em></h2>
+      <p class="coming-desc">IEEE, Rotaract, ESCA roles and event management experience — coming soon.</p>
+    </div>
+    <div class="coming-pill fadein"><span class="dot2"></span> Coming Soon</div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS — FULL -->
+<section id="achievements" class="coming-section">
+  <div class="container">
+    <div class="sec-label fadein">Recognition</div>
+    <h2 class="sec-title fadein">Achievements &amp; <em>Awards</em></h2>
+    <div class="ach-list">
+
+      <div class="ach-card fadein">
+        <div class="ach-left">
+          <div class="ach-medal">🥈</div>
+          <div class="ach-line"></div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-meta">
+            <span class="ach-badge">International</span>
+            <span class="ach-date"><i class="fas fa-calendar-alt"></i> Jan 2026</span>
+          </div>
+          <h3 class="ach-title">2nd Prize — Indradhanu International Grand Challenge 2025–26</h3>
+          <div class="ach-issuer"><i class="fas fa-university"></i> Pimpri Chinchwad College of Engineering (PCCOE), Pune</div>
+          <p class="ach-desc">Competed under the theme <strong>AI for Climate Change</strong> (UN SDG: Climate Action) among <strong>1,002 idea submissions</strong>, with only <strong>19 finalist teams</strong> selected for the Grand Finale. Our project — an <strong>AI-based Audio-Enabled Smart Bin</strong> for automated waste segregation — won 2nd prize on a global innovation platform with participation from international academicians and industry partners.</p>
+          <div class="ach-tags">
+            <span class="ach-tag">AI &amp; ML</span>
+            <span class="ach-tag">Climate Action</span>
+            <span class="ach-tag">Waste Management</span>
+            <span class="ach-tag">UN SDG</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card fadein">
+        <div class="ach-left">
+          <div class="ach-medal">🥈</div>
+          <div class="ach-line"></div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-meta">
+            <span class="ach-badge">Coding Competition</span>
+            <span class="ach-date"><i class="fas fa-calendar-alt"></i> Sep 2025</span>
+          </div>
+          <h3 class="ach-title">2nd Place — AlgoRage, IIT Patna</h3>
+          <div class="ach-issuer"><i class="fas fa-landmark"></i> Student Technical Council, Indian Institute of Technology, Patna</div>
+          <p class="ach-desc">Secured <strong>2nd Place</strong> in AlgoRage, a competitive online coding competition organized by the Student Technical Council (STC) of IIT Patna — one of India's premier technical institutes.</p>
+          <div class="ach-tags">
+            <span class="ach-tag">Competitive Programming</span>
+            <span class="ach-tag">IIT Patna</span>
+            <span class="ach-tag">Algorithms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card fadein">
+        <div class="ach-left">
+          <div class="ach-medal">🥇</div>
+          <div class="ach-line"></div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-meta">
+            <span class="ach-badge ach-badge-gold">1st Place</span>
+            <span class="ach-date"><i class="fas fa-calendar-alt"></i> Mar 2025</span>
+          </div>
+          <h3 class="ach-title">1st Place — AlgoRage, IIT Patna Hybrid Program</h3>
+          <div class="ach-issuer"><i class="fas fa-landmark"></i> Technology Club, IITP Hybrid Programs (Team Code Red) · IIT Patna</div>
+          <p class="ach-desc">Secured <strong>1st Place</strong> in AlgoRage organized by the Technology Club of IITP Hybrid Programs — the prestigious coding club of IIT Patna. Competed as part of <strong>Team Code Red</strong> and was honored as one of the top performers in this competitive coding challenge.</p>
+          <div class="ach-tags">
+            <span class="ach-tag">Competitive Programming</span>
+            <span class="ach-tag">Team Code Red</span>
+            <span class="ach-tag">IIT Patna</span>
+            <span class="ach-tag">1st Place</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT — FULL -->
+<section id="contact" class="contact-full">
+  <div class="container">
+    <div class="sec-label fadein">Let's Connect</div>
+    <div class="contact-grid">
+
+      <div class="fadein">
+        <div class="con-info-title">Get In <em>Touch</em></div>
+        <p class="con-info-desc">Whether it's a collaboration, internship opportunity, or just a hello — I'm always open to a good conversation. I'll get back within 24 hours!</p>
+
+        <div class="con-item">
+          <div class="con-icon"><i class="fas fa-envelope"></i></div>
+          <a href="mailto:arvind@example.com">arvind@example.com</a>
+        </div>
+        <div class="con-item">
+          <div class="con-icon"><i class="fas fa-phone"></i></div>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="con-item">
+          <div class="con-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <span>Pune, Maharashtra, India 🇮🇳</span>
+        </div>
+        <div class="con-item">
+          <div class="con-icon"><i class="fab fa-linkedin-in"></i></div>
+          <a href="https://www.linkedin.com/in/arvind4z/" target="_blank">linkedin.com/in/arvind4z</a>
+        </div>
+        <div class="con-item">
+          <div class="con-icon"><i class="fab fa-github"></i></div>
+          <a href="https://github.com/arvind4z" target="_blank">github.com/arvind4z</a>
+        </div>
+
+        <div class="con-socials">
+          <a href="https://www.linkedin.com/in/arvind4z/" target="_blank" class="slink"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/arvind4z" target="_blank" class="slink"><i class="fab fa-github"></i></a>
+          <a href="#" class="slink"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="slink"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="slink"><i class="fab fa-hackerrank"></i></a>
+        </div>
+      </div>
+
+      <div class="con-form fadein">
+        <div id="form-success" style="display:none;text-align:center;padding:2.5rem 1rem;">
+          <div style="font-size:2.8rem;margin-bottom:.8rem;">✅</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;margin-bottom:.5rem;">Message Sent!</div>
+          <div style="color:var(--text2);font-size:.9rem;line-height:1.6;">Thanks for reaching out.<br/>Arvind will get back to you soon.</div>
+        </div>
+        <div id="form-wrap">
+          <div class="frow">
+            <div class="fgrp"><label>Your Name</label><input type="text" id="cf-name" placeholder="John Doe" required/></div>
+            <div class="fgrp"><label>Email</label><input type="email" id="cf-email" placeholder="john@example.com" required/></div>
+          </div>
+          <div class="fgrp"><label>Subject</label><input type="text" id="cf-subject" placeholder="Collaboration / Internship / Hello!"/></div>
+          <div class="fgrp"><label>Message</label><textarea id="cf-msg" placeholder="Hi Arvind! I wanted to reach out about..." required></textarea></div>
+          <button class="send-btn" id="send-btn" onclick="submitForm()">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Crafted by <span>Arvind G.</span> · Pune, India · © 2025 · More sections coming soon 🚀</p>
+</footer>
+
+<script>
+// Theme
+const html = document.documentElement;
+document.getElementById('themeBtn').addEventListener('click', function(){
+  const dark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', dark ? 'light' : 'dark');
+  this.textContent = dark ? '🌙' : '☀️';
+});
+
+// Hamburger
+document.getElementById('ham').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Scroll fade-in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fadein').forEach(el => obs.observe(el));
+
+// Formspree contact form
+async function submitForm() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const msg = document.getElementById('cf-msg').value.trim();
+  if(!name || !email || !msg) { alert('Please fill in Name, Email and Message.'); return; }
+  const btn = document.getElementById('send-btn');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/mkoekpln', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message: msg })
+    });
+    if(res.ok) {
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
+  } catch(e) {
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+    btn.disabled = false;
+    alert('Network error. Please try again.');
+  }
+}
+</script>
+</body>
+</html>
